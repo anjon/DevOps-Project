@@ -1,8 +1,6 @@
 # DevOps Project 01
 -------------------
 
-![DevOps Project 01](C:\Users\anjon\OneDrive\Pictures\DevOps-Project\devops-project-01.jpg)
-
 ### Prerequisite
 1. Jenkins Server
 2. Apache Tomcat Server
