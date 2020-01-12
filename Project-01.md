@@ -36,4 +36,18 @@ For setting up the apache tomcat server refer to the link https://github.com/anj
   - On the *Containers* part add container *Tomcat 9x remote* form the drop down menu.
   - Set `Credentials` form drop down menu which we just set.
   - Provide `Tomcat URL=http://tomcat_server_ip:8090`. 
-- Now click `Apply` & `Save`. 
+- Click `Apply` & `Save`. 
+Now on the ***DevOps-Project-01*** if we click the `Build Now` then the app should be build as .war file in the Jenkins Server and deploy remotely to the Apache Tomcat Server. 
+
+### Check and Verify
+Go to the browser and put the apache tomcat server ip to check the webapp output. 
+`http://apache_server_ip:8090/webapp`
+The output should be similar like 
+`Hello Jenkins.This is DevOps Project 01`.
+
+### To Make Automated Build and Deploy
+To make this project we can do some more tweak like below. 
+- Go to the ***DevOps-Project-01***. The click `Configure`. 
+- On the **Build Triggers** section select `Poll SCM` and set `Schedule=H/2 * * * *`
+This option set the project git repository to be check for every 2 minutes if there is any change done or not. If there will be any change on the source code then it will trigger a new build automatically. 
+
