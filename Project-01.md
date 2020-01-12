@@ -18,9 +18,9 @@ For setting up the apache tomcat server refer to the link https://github.com/anj
   - Search for `Unleash Maven Plugin` and `Maven Invoker plugin`. Check the box and install them.
 - Create a new item with the name *"DevOps Project 01"* with the item type *"Maven Project"*.
 - On the **Source Code Management** section select *Git* and put the *Repository URL* to "https://github.com/anjon/Maven-Web-App.git".
-- In my case *Branches to build* is */master*.
-- In the **Build** section put *Root POM*=pom.xml and *Goals and options*=clean install package.
-- Click *Apply* & *Save*.
+- In my case *Branches to build* is `/master`.
+- In the **Build** section put `Root POM=pom.xml` and `Goals and options=clean install package`.
+- Click `Apply` & `Save`.
 - Now on the *"DevOps Project 01"* click *Build Now*.
 
 **Step 02:** Deploy the Build to the Remote Tomcat Server
