@@ -45,7 +45,7 @@ Go to the browser and put the apache tomcat server ip to check the webapp output
 The output should be similar like 
 `Hello Jenkins.This is DevOps Project 01`.
 
-### To Make Automated Build and Deploy
+### Make Automated Build and Deploy
 To make this project we can do some more tweak like below. 
 - Go to the ***DevOps-Project-01***. The click `Configure`. 
 - On the **Build Triggers** section select `Poll SCM` and set `Schedule=H/2 * * * *`
