@@ -21,13 +21,19 @@ For setting up the apache tomcat server refer to the link https://github.com/anj
 - In my case *Branches to build* is `/master`.
 - In the **Build** section put `Root POM=pom.xml` and `Goals and options=clean install package`.
 - Click `Apply` & `Save`.
-- Now on the *"DevOps Project 01"* click *Build Now*.
+- Now on the *"DevOps Project 01"* click `Build Now`.
 
 **Step 02:** Deploy the Build to the Remote Tomcat Server
-
-- Plugin required for this project are listed below. To install the plugin go to *Manage Jenkins > Manage Plugin > Available* and search for the below plugins. Check the box and install them. 
-
--- Deploy to container Plugin.
-- For this project we need to add the credential to access the remote tomcat server. Now to add the Credential follow the below steps. 
--- In the Jenkins home page Click *Credentials > * 
-- Now on the section **Post-build Actions** set *WAR/EAR files*=```**/*.war```. On the *Containers* part add container from the *Tomcat 9x remote* form the drop down menu.
+- To deploy to this `.war` file to the remote tomcat server we need to add the tomcat server credential and the Deploy to container Plugin.
+- Add the remote tomcat server credential and Plugin
+  - On the Jenkins home page. `Credentials` > `Jenkins` > `Global credentials (unrestricted)`.
+  - On left `Add Credential`. Then set the `username`, `password`. The `ID` & `Description` are optional but I've set `Tomcat_Credential`.
+  - In the tomcat server configuration I've set the user deployer. In this credential I'm using it.
+  - The `Deploy to container Plugin` needs to be installed. The installation process is same as in **Step 01**
+- Now on the Jenkins Home select the ongoing build i.e. ***DevOps-Project-01***. On the left click `configure`
+- Now on the section **Post-build Actions** 
+  - Set `WAR/EAR files=**/*.war`. 
+  - On the *Containers* part add container *Tomcat 9x remote* form the drop down menu.
+  - Set `Credentials` form drop down menu which we just set.
+  - Provide `Tomcat URL=http://tomcat_server_ip:8090`. 
+- Now click `Apply` & `Save`. 
