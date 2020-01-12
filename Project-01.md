@@ -1,4 +1,5 @@
 # DevOps Project 01
+![Image of devops project 01](https://github.com/anjon/DevOps-Project/blob/master/devops-project-01.jpg)
 
 ### Prerequisite
 1. Jenkins Server
