@@ -8,13 +8,13 @@
 For setting up the jenkins server please refer to the link https://github.com/anjon/Jenkins/tree/master/jenkins_install
 
 ### Apache Tomcat Sever Setup
-For setting up the apache tomcat server please refer to the link https://github.com/anjon/Jenkins/tree/master/tomcat_install
+For setting up the apache tomcat server refer to the link https://github.com/anjon/Jenkins/tree/master/tomcat_install
 
 ### Configure the Project on Jenkins
 **Step 01:** Check the build stage on the Jenkins local system
 - Login to the jenkins server with http://yourpublicip:8080.
-- To create a maven project we need to install *Unleash Maven Plugin* and *Maven Invoker plugin*
-  - To install the plugin go to *Manage Jenkins > Manage Plugin > Available* 
+- To create a maven project we need to install ```Unleash Maven Plugin``` and ```Maven Invoker plugin```
+  - To install the plugin go to ```Manage Jenkins``` > ```Manage Plugin``` > ```Available``` 
   - Search for *Unleash Maven Plugin* and *Maven Invoker plugin*. Check the box and install them.
 - Create a new item with the name *"DevOps Project 01"* with the item type *"Maven Project"*.
 - On the **Source Code Management** section select *Git* and put the *Repository URL* to "https://github.com/anjon/Maven-Web-App.git".
