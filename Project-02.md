@@ -68,7 +68,15 @@ vim /opt/playbooks/copywarfile.yml
         src: /opt/playbooks/target/webapp.war 
         dest: /opt/apache-tomcat-9.0.30/webapps
 ```
-- Add thisplaybookto the ***DevOps Project 02***
+- Add this playbook to the ***DevOps Project 02***
   - Click Configure and then from the **Post Steps** section `Add post-build step` dropdown menu select `Send files or execute commands over SSH`.
   - `Exec command=ansible-playbook /opt/playbooks/copywarfile.yml`
+  - Click `Apply` & `Save`
 
+We are now end of our project configuration. Now ifwe click to the `Build Now` under the ***DevOps Project 02*** then this will work like the following way
+1. Build the webapp form the git repo which we have added in this project.
+2. Publish this webapp to the Ansible server.
+3. Send the webapp.war form the Ansible to the Tomcat server by using the `copywarfile.yml` file.
+
+We can verify this configuration form the browser.
+`http://tomcat-public-ip:8090/webapp`
