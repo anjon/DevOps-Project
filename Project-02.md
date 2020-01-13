@@ -34,6 +34,7 @@ In this step we are sending the webapp to our deployment server i.e. Ansible.
 - Need to install the `Publish Over SSH` plugin. 
   - Jenkins Home > Manage Jenkins > Manage Plugin > Available.
   - Search for `Publish Over SSH` plugin and select it. Then install it. 
+
 Now form the Jenkins Home page go to the ***DevOps Project 02***.
 - Click Configure and then from the **Post Steps** section `Add post-build step` dropdown menu select `Send files or execute commands over SSH`.
   - SSH Server `Name=Ansible_Server`, `Source files=target/*.war`, `Remote directory=//opt//playbooks`. 
