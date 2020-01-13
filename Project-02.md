@@ -36,13 +36,13 @@ In this step we are sending the webapp to our deployment server i.e. Ansible.
   - Search for `Publish Over SSH` plugin and select it. Then install it. 
 
 Now form the Jenkins Home page go to the ***DevOps Project 02***.
-- Click Configure and then from the **Post Steps** section `Add post-build step` dropdown menu select `Send files or execute commands over SSH`.
+- Click `Configure` and then from the **Post Steps** section `Add post-build step` dropdown menu select `Send files or execute commands over SSH`.
   - SSH Server `Name=Ansible_Server`, `Source files=target/*.war`, `Remote directory=//opt//playbooks`. 
 - Click `Apply` and `Save`
 
 #### Stage 03: Deploy webapp to the Tomcat Server. 
 For this we need an user to the tomcat server by using which we are going to deploy the webapp there. 
-- Login to the Tomcat server to add an user and add target tomcat server ip 
+- Login to the Tomcat server to add an user and add target tomcat server ip in ansible configuration.
 ```sh 
 useradd ansadmin
 echo "password" | passed --stdin ansadmin
@@ -69,6 +69,6 @@ vim /opt/playbooks/copywarfile.yml
         dest: /opt/apache-tomcat-9.0.30/webapps
 ```
 - Add thisplaybookto the ***DevOps Project 02***
-  -- Click Configure and then from the **Post Steps** section `Add post-build step` dropdown menu select `Send files or execute commands over SSH`.
-  -- `Exec command=ansible-playbook /opt/playbooks/copywarfile.yml`
+  - Click Configure and then from the **Post Steps** section `Add post-build step` dropdown menu select `Send files or execute commands over SSH`.
+  - `Exec command=ansible-playbook /opt/playbooks/copywarfile.yml`
 
