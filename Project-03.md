@@ -65,7 +65,8 @@ docker build -t docker_demo .
 Exec command=docker run -d --name docker_demo -p 8090:8080 docker_demo
 ```
 
-Now check on the docker host what are the image are there and containers run over there.  
+Now check on the docker host what are the image are there and containers run over there. Check images and containers again on Docker host. This time an image and container get creates through Jenkins job.  
+
 On the ***DevOps-Project-03*** home page run the `Build Now` and check for the success of the jenkins job. After the completion of  jenkins job please go to the web browser and then check the application  
 `http://<DOCKER_PUB_IP>:8090/webapp`  
 
