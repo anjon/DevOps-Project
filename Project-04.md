@@ -56,3 +56,5 @@ ansible docker -m ping
   
 - Install publish over ssh plugin.
   - `Manage Jenkins` --> `Manage Plugins` --> `Available` search for the "Publish Over ssh", select and install it.
+
+- Connect to the docker hub from the ansible server cli. `docker login`. Provide the username and password.
