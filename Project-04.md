@@ -10,7 +10,7 @@ In this project, we will be see how to use Git, Jenkins, Ansible, DockerHub, Doc
 3. Docker Host.
 4. DockerHub Account
 
-### Part 01
+### Part 01: Creating Docker Image & Push To DockerHub
 In this part we are going to build a java war file by using the github source code. Then we are sending this source code to our ansible server. In the ansible server we are going to build a docker image using the war file and after the image is build push this image to the docker hub.
 
 - Launch 2 EC2 instance one for ansible and another for docker host. 
@@ -86,4 +86,4 @@ Now We are ready to start our project. From the Jenkins Home create a new item n
 At this stage we can test the part 01 status of our project. From the ***DevOps Project 04*** home tab click `Build Now`
 Check if the image is build local ansible server. Also login to the docker hub to check for the pushed image we have build in this part. Should be successful. 
 
-
+### Part 02: Deploy Docker Image
