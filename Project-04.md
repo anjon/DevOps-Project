@@ -83,3 +83,7 @@ Now We are ready to start our project. From the Jenkins Home create a new item n
   docker push anjon/docker_demo
   docker rmi docker_demo anjon/docker_demo
   ```
+At this stage we can test the part 01 status of our project. From the ***DevOps Project 04*** home tab click `Build Now`
+Check if the image is build local ansible server. Also login to the docker hub to check for the pushed image we have build in this part. Should be successful. 
+
+
