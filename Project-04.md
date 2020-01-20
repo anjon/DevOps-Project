@@ -58,3 +58,28 @@ ansible docker -m ping
   - `Manage Jenkins` --> `Manage Plugins` --> `Available` search for the "Publish Over ssh", select and install it.
 
 - Connect to the docker hub from the ansible server cli. `docker login`. Provide the username and password.
+
+Now We are ready to start our project. From the Jenkins Home create a new item name ***DevOps Project 04*** with the type as Maven. Then we are going to configure this project as below.
+- *Source Code Management*
+  - Repository URL: `https://github.com/anjon/Maven-Web-App.git`
+  - Branch Specifier: `*/master`
+- *Build*
+  - Root POM: `pom.xml`
+  - Goals and options: `clean install package`
+- *Post Steps*  select `Send files or execute commands over SSH` from the `Add post-build step` drop down menu. 
+  - NAME: `Ansible_Server`
+  - Source files: `target/*.war`
+  - Remove prefix: `target`
+  - Remote directory: `//opt//docker`
+- Add another `Send files or execute commands over SSH`
+  - Name: `Ansible_Server`
+  - Source files: `Dockerfile`
+  - Remote directory: `//opt//docker`
+  - Exec command: 
+  ```sh
+  cd /opt/docker
+  docker build -t docker_demo .
+  docker tag docker_demo anjon/docker_demo
+  docker push anjon/docker_demo
+  docker rmi docker_demo anjon/docker_demo
+  ```
