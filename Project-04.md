@@ -123,3 +123,34 @@ To get this model we need to use to jenkins variable, which are
 - `BUILD_ID` - The current build id
 - `JOB_NAME` - Name of the project of this build.
 
+Now I'm going to edit some of the build command which was used to build the image
+- Modify the Step 01 build part as the following
+```sh
+cd /opt/docker
+docker build -t $JOB_NAME:v1.$BUILD_ID .
+docker tag $JOB_NAME:v1.$BUILD_ID anjon/$JOB_NAME:v1.$BUILD_ID
+docker tag $JOB_NAME:v1.$BUILD_ID anjon/$JOB_NAME:latest
+docker push anjon/$JOB_NAME:v1.$BUILD_ID
+docker push anjon/$JOB_NAME:latest
+docker rmi $JOB_NAME:v1.$BUILD_ID anjon/$JOB_NAME:v1.$BUILD_ID anjon/$JOB_NAME:latest
+```
+
+With this we need to modify our ansible playbook which we used for deploying the container. 
+```yaml
+---
+- hosts: docker
+  become: true
+  tasks:
+   - name: stop previous version docker                         # Comment this line for the first build
+     shell: docker stop docker_demo                             # Comment this line for the first build
+   - name: remove stopped container                             # Comment this line for the first build
+     shell: docker rm -f docker_demo	                          # Comment this line for the first build
+   - name: remove docker images                                 # Comment this line for the first build
+     shell: docker image rm -f anjon/devops_project_04:latest   # Comment this line for the first build
+      
+   - name: create docker image
+     shell: docker run -d --name docker_demo -p 8090:8080 anjon/devops_project_04:latest
+```
+
+Now on the docker server we'll always have the latest docker container. But in case of any issue we can easily revert to the previous container.  
+`http://<DOCKER_PUB_IP>:8090/webapp`
