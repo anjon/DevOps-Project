@@ -116,3 +116,10 @@ vim create_docker_container.yml
 Now we can update out git repo and then run the jenkins job to check the status. It should be successful.  
 To verify it correctly go to `http://<DOCKER_PUB_IP>:8090/webapp`
 
+### Part 03: Deploy Container With Version Control
+Untill now we used the latest image to deploy the container. In this stage we'll try to manage some taging and use some versioning so if something bad happen to the latest container we can swith to the previous container easily. 
+
+To get this model we need to use to jenkins variable, which are 
+- `BUILD_ID` - The current build id
+- `JOB_NAME` - Name of the project of this build.
+
