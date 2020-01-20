@@ -50,5 +50,8 @@ ansible docker -m ping
 
 - Add the ansible server in the jekins system configuration
   - `Manage Jenkins` --> `Configire systems` --> `Publish over SSH` section add `Ansible_Server. Click add and the values are
-  - `Name=Ansible_Server`, `Hostname=<DOCKER_PRI_IP>`, `Username=ansadmin`, on the Advanced tab put the password.
+  - `Name=Ansible_Server`, `Hostname=<DOCKER_PRI_IP>`, `Username=ansadmin`. Click `Advanced`   
+  - Select `Use password authentication, or use a different key` box and put the passsword for ansadmin.
   
+- Install publish over ssh plugin.
+  - `Manage Jenkins` --> `Manage Plugins` --> `Available` search for the "Publish Over ssh", select and install it.
