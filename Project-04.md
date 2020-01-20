@@ -22,7 +22,7 @@ In this part we are going to build a java war file by using the github source co
   echo 'ansadmin'| passwd --stdin ansadmin
   usermod -aG docker ansadmin
   echo 'ansadmin  ALL=(ALL)   NOPASSWD: ALL' > /etc/sudoers.d/ansadmin
-  `
+  ```
 - Add docker host in the ansible host file and configure passswordless authentication.
 ```sh
 # On Both ansible & docker server
@@ -40,6 +40,7 @@ DOCKER_PRI_IP   docker
 su - ansadmin
 ssh-keygn
 ssh-copy-id ansadmin@docker
+mkdir /opt/playbooks
 ```
 
 - Check the configuration form the ansible to docker host server.
