@@ -87,3 +87,32 @@ At this stage we can test the part 01 status of our project. From the ***DevOps 
 Check if the image is build local ansible server. Also login to the docker hub to check for the pushed image we have build in this part. Should be successful. 
 
 ### Part 02: Deploy Docker Image
+In this part we are going to deploy and run a container to the docker server from the ansible host. For this we need to write a ansible playbook.
+- Write an ansible playbook for deploy container to the docker host.
+```yaml
+mkdir /opt/playbooks && cd /opt/playbooks
+chown -R ansadmin.ansadmin /opt/playbooks
+vim create_docker_container.yml
+---
+- hosts: docker
+  become: true
+  tasks:
+   - name: stop previous version docker
+     shell: docker stop docker_demo
+   - name: remove stopped container
+     shell: docker rm -f docker_demo	  
+   - name: remove docker images
+     shell: docker image rm -f anjon/docker_demo
+      
+   - name: create docker image
+     shell: docker run -d --name docker_demo -p 8090:8080 anjon/docker_demo
+```
+- Add this script to the jenkins job
+  - On the project configure tab go to the section `Post Steps`.
+  - Add `Send files or execute commands over SSH`
+  - Name: `Ansible_Server`
+  - Exec command: `ansible-playbook /opt/playbooks/create_docker_container.yml`
+  
+Now we can update out git repo and then run the jenkins job to check the status. It should be successful.  
+To verify it correctly go to `http://<DOCKER_PUB_IP>:8090/webapp`
+
